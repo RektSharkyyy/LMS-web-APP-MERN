@@ -1,5 +1,8 @@
 import React from "react";
 import { assets } from "../../assets/assets";
+import SearchBar from "./SearchBar";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Hero = () => {
   return (
@@ -26,6 +29,7 @@ const Hero = () => {
         we bring together world-class instructors to help you achieve your
         professional goals
       </p>
+      <SearchBar></SearchBar>
     </div>
   );
 };
