@@ -5,7 +5,6 @@ import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import YouTube from "react-youtube";
 import Footer from "../../components/student/Footer";
-import { Rating } from "react-simple-star-rating";
 
 const Player = () => {
   const { enrolledCourses, calculateChapterTime } = useContext(AppContext);
