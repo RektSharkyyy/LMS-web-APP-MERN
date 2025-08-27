@@ -1,5 +1,5 @@
 import { Webhook } from "svix";
-import User from "../models/user";
+import User from "../models/user.js";
 
 // API Conytoller Function to Manage Clerk user with database
 
