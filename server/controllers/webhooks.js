@@ -19,7 +19,7 @@ import User from "../models/user.js";
             case 'user.created': {
                 const userData = {
                     _id: userData,
-                    email: data.email_address[0].email_address,
+                    email: data.email_addresses[0].email_address,
                     name: data.first_name + " " + data.lastName,
                     imageUrl: data.image_url,
                 }
