@@ -18,9 +18,9 @@ import User from "../models/user.js";
         switch (type) {
             case 'user.created': {
                 const userData = {
-                    _id: userData,
+                    _id: data.id,
                     email: data.email_addresses[0].email_address,
-                    name: data.first_name + " " + data.lastName,
+                    name: data.first_name + " " + data.lastname,
                     imageUrl: data.image_url,
                 }
                 await User.create(userData)
@@ -31,7 +31,7 @@ import User from "../models/user.js";
             case 'user.updated': {
                 const userData = {
                     email: data.email_address[0].email_address,
-                    name: data.first_name + " " + data.lastName,
+                    name: data.first_name + " " + data.lastname,
                     imageUrl: data.image_url,
                 }
                 await User.findByIdAndUpdate(data.id, userData)
