@@ -8,6 +8,7 @@ export const getAllCourse = async(req, res)=>{
     } catch (error) {
         res.json({success: false, message: error.message})
     }
+    
 }
 
 // get course by ID
