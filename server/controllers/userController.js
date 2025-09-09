@@ -81,6 +81,6 @@ export const purschaseCourse = async(req, res)=>{
 
 
     } catch (error) {
-        ({success:false, message: error.message})
+        res.json({success:false, message: error.message})
     }
 }

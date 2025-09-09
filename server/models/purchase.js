@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
-import { useId } from "react";
 
 const purchaseSchema = new mongoose.Schema({
     courseId: {type: mongoose.Schema.Types.ObjectId,
         ref: 'Course',
         required: true
     },
-    useId: {
+    userId: {
         type: String,
         ref: 'User',
         required: true
