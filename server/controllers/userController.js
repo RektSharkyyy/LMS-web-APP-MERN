@@ -31,6 +31,9 @@ export const userEnrolledCourses =  async(req, res)=>{
 
 // Purchase course
 export const purschaseCourse = async(req, res)=>{
+
+    console.log('sucess user controller')
+
     try {
          const {courseId} = req.body
          const {origin} = req.headers
