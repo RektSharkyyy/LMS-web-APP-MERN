@@ -23,7 +23,7 @@ import Course from "../models/course.js";
                 const userData = {
                     _id: data.id,
                     email: data.email_addresses[0].email_address,
-                    name: data.first_name + " " + data.lastname,
+                    name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url,
                 }
                 await User.create(userData)
@@ -34,7 +34,7 @@ import Course from "../models/course.js";
             case 'user.updated': {
                 const userData = {
                     email: data.email_address[0].email_address,
-                    name: data.first_name + " " + data.lastname,
+                    name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url,
                 }
                 await User.findByIdAndUpdate(data.id, userData)
@@ -64,7 +64,7 @@ export const stripeWebhooks = async(request, response) =>{
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+      event = stripeInstance.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
       }
       catch (err) {
         response.status(400).send(`Webhook Error: ${err.message}`);
@@ -77,7 +77,7 @@ export const stripeWebhooks = async(request, response) =>{
           const paymentIntendId = paymentIntent.id;
 
           const session = await stripeInstance.checkout.sessions.list({
-            paymentIntent: paymentIntendId
+            payment_Intent: paymentIntendId
           })
 
           const { purchaseId } = session.data[0].metadata;
