@@ -75,7 +75,7 @@ const MyEnrollments = () => {
                   <button
                     className="px-3 sm:px-5 py-1.5 sm:py-2 bg-blue-600
                   max-sm:text-xs text-white"
-                    onClick={() => navigate("/Player/" + course._id)}
+                    onClick={() => navigate("/player/" + course._id)}
                   >
                     {progressArray[index] &&
                     progressArray[index].lectureCompleted /
