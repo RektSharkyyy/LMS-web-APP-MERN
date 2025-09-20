@@ -9,6 +9,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Loading from "../../components/student/Loading";
 
+import Rating from "../../components/student/Rating";
+
 const Player = () => {
 
 
@@ -22,13 +24,14 @@ const Player = () => {
   const [initialRating, setinitialRating] = useState(0)
 
   const getCourseData = () => {
-    enrolledCourses.map((course) => {
+    enrolledCourses.forEach((course) => {
       if (course._id === courseId) {
         setCourseData(course);
-        course.courseRating.map((item)=>{
-          if(item.user)
-          setinitialRating(item.rating)
-        })
+        if (course.courseRating && Array.isArray(course.courseRating)) {
+          course.courseRating.forEach((item) => {
+            if (item.user) setinitialRating(item.rating);
+          });
+        }
       }
     });
   };
@@ -62,7 +65,7 @@ const Player = () => {
     }
   }
 
-  getCourseProgress = async ()=>{
+  const getCourseProgress = async ()=>{
     try {
       const token = await getToken()
       const {data} = await axios.post(backendUrl + '/api/user/get-course-progress', {courseId}, {headers:{Authorization:`Bearer ${token}`}})
@@ -107,7 +110,7 @@ const Player = () => {
         <div className="text-gray-800">
           <h2 className="text-xl font-semibold">Course structure</h2>
           <div className="pt-5">
-            {courseData &&
+            {courseData && Array.isArray(courseData.courseContent) &&
               courseData.courseContent.map((chapter, index) => (
                 <div
                   key={index}

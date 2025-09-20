@@ -143,7 +143,8 @@ export const AppContextProvider = (props) => {
     userData,
     setUserData,
     getToken,
-    fetchAllCourses 
+    fetchAllCourses,
+    fetchUserEnrolledCourses
   };
 
   return (
